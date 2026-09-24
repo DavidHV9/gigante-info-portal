@@ -63,7 +63,8 @@ function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const story = heroStories[slide];
+  const story = heroStories[slide] ?? heroStories[0];
+  if (!story) return null;
   useEffect(() => {
     const skeleton = window.setTimeout(() => setLoading(false), 850);
     const carousel = window.setInterval(() => setSlide((value) => (value + 1) % heroStories.length), 7000);
